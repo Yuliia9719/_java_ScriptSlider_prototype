@@ -15,6 +15,7 @@ Carousel.prototype = {
 
     controls.innerHTML = PAUSE + NEXT + PREV
     this.container.append(controls)
+
     const indicators = document.createElement('div');
     const ZERO = '<div class="indicator active" data-slide-to="0"></div>'
     const ONE = '<div class="indicator" data-slide-to="1"></div>'
@@ -23,8 +24,10 @@ Carousel.prototype = {
     const FOUR = '<div class="indicator" data-slide-to="4"></div>'
     const FIVE = '<div class="indicator" data-slide-to="5"></div>'
     const SIX = '<div class="indicator" data-slide-to="6"></div>'
+
     indicators.setAttribute('id', 'indicators-container');
     indicators.classList.add('indicators');
+
     indicators.innerHTML = ZERO + ONE + TWO + THREE + FOUR + FIVE + SIX
     this.container.append(indicators)
   
