@@ -15,18 +15,30 @@ Carousel.prototype = {
 
     controls.innerHTML = PAUSE + NEXT + PREV
     this.container.append(controls)
-
+    const indicators = document.createElement('div');
+    const ZERO = '<div class="indicator active" data-slide-to="0"></div>'
+    const ONE = '<div class="indicator" data-slide-to="1"></div>'
+    const TWO = '<div class="indicator" data-slide-to="2"></div>'
+    const THREE = '<div class="indicator" data-slide-to="3"></div>'
+    const FOUR = '<div class="indicator" data-slide-to="4"></div>'
+    const FIVE = '<div class="indicator" data-slide-to="5"></div>'
+    const SIX = '<div class="indicator" data-slide-to="6"></div>'
+    indicators.setAttribute('id', 'indicators-container');
+    indicators.classList.add('indicators');
+    indicators.innerHTML = ZERO + ONE + TWO + THREE + FOUR + FIVE + SIX
+    this.container.append(indicators)
+  
     this.pauseBtn = this.container.querySelector('#pause-btn');
     this.prevBtn = this.container.querySelector('#prev-btn');
     this.nextBtn = this.container.querySelector('#next-btn');
+    this.indicatorsContainer = this.container.querySelector('#indicators-container');
+    this.indicatorItems = this.container.querySelectorAll('.indicator');
   },
 
   _initProps() {
     this.body = document.body;
     this.container = document.querySelector('#carousel');
     this.slides = this.container.querySelectorAll('.slide');
-    this.indicatorsContainer = this.container.querySelector('#indicators-container');
-    this.indicatorItems = this.container.querySelectorAll('.indicator');
     this.SLIDES_COUNT = this.slides.length
     this.CODE_ARROW_LEFT = 'ArrowLeft'
     this.CODE_ARROW_RIGHT = 'ArrowRight'
@@ -116,7 +128,6 @@ Carousel.prototype = {
     this.prevBtn.addEventListener('click', this.prev.bind(this))
     this.indicatorsContainer.addEventListener('click', this._indicateHandler.bind(this))
     document.addEventListener('keydown', this._pressKeyHandler.bind(this))
-  
   },
   
   init() {
